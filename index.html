@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Replica</title>
+    <link rel="icon" href="https://www.youtube.com/s/desktop/4d84e0b5/img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="YouTube clone built with Tailwind CSS">
+    <style>
+        .video-card:hover .video-overlay {
+            opacity: 1;
+        }
+        .shorts-card:hover .shorts-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#0f0f0f] text-white">
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 right-0 bg-[#0f0f0f] z-50 px-4 py-2 flex items-center justify-between border-b border-[#303030]">
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <i class="fas fa-bars text-xl mr-4 cursor-pointer hover:bg-[#272727] p-2 rounded-full"></i>
+                <div class="flex items-center cursor-pointer">
+                    <i class="fab fa-youtube text-red-600 text-3xl mr-1"></i>
+                    <span class="text-xl font-semibold">YouTube</span>
+                    <span class="text-xs ml-1">US</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center flex-1 max-w-2xl mx-4">
+            <div class="flex w-full">
+                <input type="text" placeholder="Search" class="w-full bg-[#121212] border border-[#303030] px-4 py-2 rounded-l-full focus:outline-none focus:border-blue-500">
+                <button class="bg-[#222222] px-5 border border-l-0 border-[#303030] rounded-r-full">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="ml-4 bg-[#222222] p-2 rounded-full">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <button class="p-2 rounded-full hover:bg-[#272727]">
+                <i class="fas fa-video"></i>
+            </button>
+            <button class="p-2 rounded-full hover:bg-[#272727]">
+                <i class="fas fa-bell"></i>
+            </button>
+            <button class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                <span class="text-sm">A</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-14 bottom-0 w-64 bg-[#0f0f0f] overflow-y-auto hidden md:block">
+        <div class="py-2">
+            <div class="px-4 py-2 hover:bg-[#272727] rounded-lg cursor-pointer flex items-center">
+                <i class="fas fa-home mr-4"></i>
+                <span>Home</span>
+            </div>
+            <div class="px-4 py-2 hover:bg-[#272727] rounded-lg cursor-pointer flex items-center">
+                <i class="fas fa-compass mr-4"></i>
+                <span>Explore</span>
+            </div>
+            <div class="px-4 py-2 hover:bg-[#272727] rounded-lg cursor-pointer flex items-center">
+                <i class="fas fa-play-circle mr-4"></i>
+                <span>Shorts</span>
+            </div>
+            <div class="px-4 py-2 hover:bg-[#272727] rounded-lg cursor-pointer flex items-center">
+                <i class="fas fa-subscript mr-4"></i>
+                <span>Subscriptions</span>
+            </div>
+        </div>
+
+        <div class="border-t border-[#303030] pt-2">
+            <h3 class="px-4 py-2 font-medium">You</h3>
+            <div class="px-4 py-2 hover:bg-[#272727] rounded-lg cursor-pointer flex items-center">
+                <i class="fas fa-history mr-4"></i>
+                <span>History</span>
+            </div>
+            <div class="px-4 py-2 hover:bg-[#272727] rounded-lg cursor-pointer flex items-center">
+                <i class="fas fa-clock mr-4"></i>
+                <span>Watch Later</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="mt-14 ml-0 md:ml-64 p-4">
+        <!-- Categories Bar -->
+        <div class="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+            <button class="px-3 py-1 bg-white text-black rounded-full text-sm whitespace-nowrap">All</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">Music</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">Gaming</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">News</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">Live</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">Recently uploaded</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">Watched</button>
+            <button class="px-3 py-1 bg-[#272727] rounded-full text-sm whitespace-nowrap">New to you</button>
+        </div>
+
+        <!-- Videos Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+            <!-- Video Card 1 -->
+            <div class="video-card cursor-pointer">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Video thumbnail" class="w-full rounded-xl">
+                    <div class="absolute bottom-1 right-1 bg-black bg-opacity-80 px-1 text-xs rounded">
+                        10:15
+                    </div>
+                    <div class="video-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                        <i class="fas fa-play text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex mt-2">
+                    <div class="w-9 h-9 rounded-full overflow-hidden mr-2">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Channel avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-sm line-clamp-2">How to build a YouTube clone with Tailwind CSS</h3>
+                        <p class="text-gray-400 text-xs mt-1">Channel Name</p>
+                        <p class="text-gray-400 text-xs">100K views • 2 days ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card cursor-pointer">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Video thumbnail" class="w-full rounded-xl">
+                    <div class="absolute bottom-1 right-1 bg-black bg-opacity-80 px-1 text-xs rounded">
+                        15:30
+                    </div>
+                    <div class="video-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                        <i class="fas fa-play text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex mt-2">
+                    <div class="w-9 h-9 rounded-full overflow-hidden mr-2">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Channel avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-sm line-clamp-2">Learn Tailwind CSS in 1 hour - Full Course</h3>
+                        <p class="text-gray-400 text-xs mt-1">Web Dev</p>
+                        <p class="text-gray-400 text-xs">500K views • 1 week ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card cursor-pointer">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Video thumbnail" class="w-full rounded-xl">
+                    <div class="absolute bottom-1 right-1 bg-black bg-opacity-80 px-1 text-xs rounded">
+                        8:45
+                    </div>
+                    <div class="video-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                        <i class="fas fa-play text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex mt-2">
+                    <div class="w-9 h-9 rounded-full overflow-hidden mr-2">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Channel avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-sm line-clamp-2">Building modern UIs with Tailwind CSS</h3>
+                        <p class="text-gray-400 text-xs mt-1">UI Design</p>
+                        <p class="text-gray-400 text-xs">1M views • 3 weeks ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 4 -->
+            <div class="video-card cursor-pointer">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Video thumbnail" class="w-full rounded-xl">
+                    <div class="absolute bottom-1 right-1 bg-black bg-opacity-80 px-1 text-xs rounded">
+                        22:10
+                    </div>
+                    <div class="video-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                        <i class="fas fa-play text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex mt-2">
+                    <div class="w-9 h-9 rounded-full overflow-hidden mr-2">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Channel avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-sm line-clamp-2">Complete Tailwind CSS tutorial for beginners</h3>
+                        <p class="text-gray-400 text-xs mt-1">Code Master</p>
+                        <p class="text-gray-400 text-xs">250K views • 1 month ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shorts Section -->
+        <div class="mt-8">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fab fa-youtube text-red-500 mr-2"></i> Shorts
+            </h2>
+            <div class="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
+                <!-- Shorts Card 1 -->
+                <div class="shorts-card flex-shrink-0 w-32 cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Shorts thumbnail" class="w-full h-48 object-cover rounded-lg">
+                        <div class="shorts-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                            <i class="fas fa-play text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-sm mt-2 line-clamp-2">Quick Tailwind tips</h3>
+                    <p class="text-gray-400 text-xs">1.5M views</p>
+                </div>
+
+                <!-- Shorts Card 2 -->
+                <div class="shorts-card flex-shrink-0 w-32 cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Shorts thumbnail" class="w-full h-48 object-cover rounded-lg">
+                        <div class="shorts-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                            <i class="fas fa-play text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-sm mt-2 line-clamp-2">CSS vs Tailwind</h3>
+                    <p class="text-gray-400 text-xs">2M views</p>
+                </div>
+
+                <!-- Shorts Card 3 -->
+                <div class="shorts-card flex-shrink-0 w-32 cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/3566223/pexels-photo-3566223.jpeg" alt="Shorts thumbnail" class="w-full h-48 object-cover rounded-lg">
+                        <div class="shorts-overlay absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 transition-opacity duration-200">
+                            <i class="fas fa-play text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-sm mt-2 line-clamp-2">Responsive design</h3>
+                    <p class="text-gray-400 text-xs">3.2M views</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
